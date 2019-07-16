@@ -2,10 +2,18 @@ package com.owlbg;
 
 import java.util.Arrays;
 
+/**
+ * Увеличиваемый IP4-адрес.<br/>
+ * Поддерживает создание из строки, инкремент, сравнение (<) и вывод на печать, что позволяет проводить перебор IP-адресов.
+ */
 public class PrintableIpAddress {
 
     private int[] parts;
 
+    /**
+     * Создаёт экземпляр класса из заданной строки. Строка должна содержать правильный IP4-адрес.
+     * @param ipString строка, содержащая правильный IP4-адрес.
+     */
     public PrintableIpAddress(String ipString) {
         this.parts = ipStringToParts(ipString);
     }
@@ -21,6 +29,9 @@ public class PrintableIpAddress {
         return result;
     }
 
+    /**
+     * Увеличение IP-адреса на единицу.
+     */
     public void increment() {
         for (int i = 3; i >= 0; i--) {
             if (parts[i] < 255) {
@@ -32,6 +43,11 @@ public class PrintableIpAddress {
         }
     }
 
+    /**
+     * Проверяем, что IP-адрес строго меньше другого IP-адреса.
+     * @param another другой адрес
+     * @return <b>true</b>, если вызывающий адрес строго меньше другого адреса, <b>false</b> в противном случае.
+     */
     public boolean isLessThan(PrintableIpAddress another) {
         for (int i = 0; i <= 3; i++) {
            if (this.parts[i] < another.parts[i]) {
